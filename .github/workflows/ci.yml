@@ -1,0 +1,32 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up .NET 10
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore
+        run: dotnet restore tests/TractusPresenterTest.Tests.csproj
+
+      - name: Build
+        run: dotnet build TractusPresenterTestForNDI.csproj -c Release --no-restore
+
+      - name: Test
+        run: dotnet test tests/TractusPresenterTest.Tests.csproj -c Release --no-restore

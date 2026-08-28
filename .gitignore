@@ -1,0 +1,27 @@
+# .NET and IDE output
+**/[Bb]in/
+**/[Oo]bj/
+.vs/
+*.user
+*.suo
+*.pdb
+TestResults/
+
+# Local builds and generated artifacts
+/publish/
+/release*/
+/previews/
+/generated-previews/
+/output/
+/tmp/
+/*.zip
+/*.sha256
+
+# Superseded artwork retained only in the local working folder
+/assets/presenters/
+/assets/presenters-original/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+Desktop.ini
